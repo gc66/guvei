@@ -1,3 +1,5 @@
+<?php
+$stime=microtime(true); 
 <!DOCTYPE html>
 <html lang="zh-cn"><head>
   <meta charset="GBK">
@@ -180,3 +182,7 @@ text-decoration: none;
 	<br>
 
 </script>
+$etime=microtime(true);//获取程序执行结束的时间
+$total=$etime-$stime;  //计算差值
+?>
+echo "<br />当前页面执行时间为：{$total} 秒";
