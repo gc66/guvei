@@ -1,0 +1,2 @@
+Object.defineProperty(Element.prototype,'classList',{get:function(){var self=this,names=self.className.split(' ');names.add=function(){var n;for(var i=arguments.length;i--;){n=true;for(var j=names.length;j--;){if(names[j]===arguments[i]){n=false;break;}}
+if(n){self.className+=(self.className?' ':'')+ arguments[i];}}};names.remove=function(){self.className='';for(var i=arguments.length;i--;){for(var j=names.length;j--;){if(names[j]!==arguments[i]){self.className+=(self.className?' ':'')+ names[j];}}}};return names;}});
