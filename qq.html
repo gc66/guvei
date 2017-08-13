@@ -5,7 +5,30 @@
   <title>GC社区 - 新起点,聚集网络各种热门工具,空间业务,QQ工具</title>
   <meta name="keywords" content="GC网，在线拉圈圈，业务网在线生成，表白网生成，表白网在线生成，业务网在线生成，圈圈赞，网页拉圈圈，空间代刷，网站工具。">
   <meta name="description" content="GC网致力于打造免费好用的在线工具">
-  <script src="//www.goxvo.ga/qq.js"></script>
+//javascript部分
+function _Callback(msg){
+  	console.log(msg);
+  	var info = document.getElementById("info");
+  	info.innerHTML = '<h3>查询结果</h3><p>昵称:'+msg.nickname+'</p><p>头像:</p><img src="'+msg.avatarUrl+'"/>
+生日天数：'+msg.offsetBirth;
+  	}
+ 
+  function getInfo(){
+  	var url = "http://r.qzone.qq.com/cgi-bin/user/cgi_personal_card?uin=";
+  	var uin = document.getElementById("uin");
+  	if(uin.value=="" || uin.value == null){
+ 
+      var info = document.getElementById("info");
+      info.innerHTML = "请输入qq号";
+      return;
+  	}
+  	url += uin.value;
+ 
+  	var script =document.createElement("script");      // 动态创建script标签
+    script.setAttribute("type", "text/javascript");
+    script.setAttribute("src",url);
+    document.body.appendChild(script);
+  }
 qq号:<input value="" id="uin"/>
 
 <input type="button" onclick = "getInfo()" value="查询"/>
