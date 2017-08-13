@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>偷揉图床</title>
+<link href="favicon.ico" rel="shortcut icon">
+<style>
+body,h1,h2,h3,h4,p,form,ol,ul{margin:0;}
+
+#r{padding:2em;overflow:hidden;zoom:1;}
+#r img{float:left;display:block;margin:0 1px 1px 0;width:150px;height:150px;}
+
+#dragF,#box{background:#222;color:#FFF;display:block;width:100%;height:400px;line-height:400px;text-align:center;}
+#dragF{position:absolute;z-index:1;cursor:pointer;opacity:0;}
+#pace{position:absolute;position:fixed;top:0;height:2px;background:#F92672;z-index:1;}
+
+</style>
+<input type="file" id="dragF" multiple="true"> 
+<div id="box">选择或拖拽图像进行上传</div>
+<div id="r"></div>
+<i id="pace"></i>
+
+<script src="itorr.m.js"></script>
+<script>
+var pp={
+	load:function(){
+		$.x('https://x.mouto.org/wb/x.php?info',function(i){
+			if(i.error){
+				if(i.error=='尚未登录')
+					pp.login();
+				else
+					alert(i.error);
+			}else{
+				//pp.show();
+			}
+		});
+	},
+	login:function(){
+		$.x('x.php?login')
+	},
+	add:function(i){
+		i=i.match(/[\w]{24,32}/);
+		var a=$.D.m('a');
+		a.href='https://ww4.sinaimg.cn/large/'+i;
+		a.target='_blank';
+		a.innerHTML='<img src="https://ww2.sinaimg.cn/thumb150/'+i+'">';
+		$.D.b($('#r'),a);
+		console.log(i);
+	},
+	show:function(){
+		$.x('pp.txt',function(X){
+			X=X.split('\n');
+			var i=X.length-2;
+			var max=location.hash.match(/[0-9]+/)||18;
+			var ii=0;
+			for(var h='';i>0;i--){
+				ii++;
+				if(ii>max)
+					break;
+				h+='<a href="https://ww4.sinaimg.cn/large/'+X[i]+'" target="_blank"><img src="https://ww2.sinaimg.cn/thumb150/'+X[i]+'"></a>';
+			}
+			$('#r').innerHTML=h;
+		});
+	}
+},
+
+alert=function(i){
+	console.log('alert:',i);
+};
+
+
+pp.load();
+
+pp.show();
+
+
+if(window.XMLHttpRequest&&window.FileReader){
+	var _html=$('html');
+
+	/*
+	_html.ondragenter=function(e){_html.className='drop'};
+	_html.ondragleave=function(e){_html.className=''};
+	*/
+	_html.ondragover=function(e){e.preventDefault();};
+	_html.ondrop=function(e){
+		e.preventDefault();
+		handleFile(e.dataTransfer.files);
+	}; 
+	$('#dragF').onchange=function(){
+		handleFile(this.files)
+	};
+
+	var handleFile=function(files){
+		if(files.length==0){
+			alert('如果拖图像进来我会很高兴哟~');
+			return;
+		}
+		
+		var _i=0,_num=files.length,
+		f=function(){
+
+			var file=files[_i];
+			//console.log(file);
+			if(file.type.indexOf('image')!=0){
+				alert('这不是一个图像或音频！');
+				return;
+			}
+			if(!file.size>2000000){
+				alert('请上传小于2MB大小的图像！');
+				return;
+			}
+
+			$('#box').innerHTML='上传中...('+_i+'/'+_num+')';
+
+
+			var xhr=new XMLHttpRequest();
+			if(xhr.upload){
+				xhr.upload.onprogress=function(e){
+					$.css($('#pace'),'width:'+e.loaded/e.total*80+'%');
+				};
+			}
+				// 文件上传成功或是失败
+			xhr.onreadystatechange=function(e){
+				if(this.readyState==4){
+					if(this.responseText.match(/^\{/)){
+						var d=JSON.parse(this.responseText);
+						//console.log(this.responseText);
+						if(d.error){
+							if(d.error=='尚未登录'){
+								pp.login();
+								return;
+							}
+							alert(d.error);
+						}else{
+							pp.add(this.responseText);
+								
+							if(window.cNz)
+								cNz('↑ http://ww2.sinaimg.cn/large/'+d.pid)
+						}
+						//alert('上传成功！');
+
+						//
+						//this.responseText
+						_i++;
+						if(_i<_num){
+							
+							//setTimeout(f,2000);
+							f();
+						}else{
+							$('#box').innerHTML='上传完成';
+						}
+
+					}else if(this.status==403){
+						pp.login();
+					}else{
+						alert('返回了一个意外的内容！你可以在聊天内容里说明情况给鹳狸猿，帮助解决问题！');
+					}
+					$.css($('#pace'),'width:0;');
+					_html.className='';
+				}
+			};
+			xhr.open('POST','https://x.mouto.org/wb/x.php?up&_r='+Math.random(),true);
+			//xhr.setRequestHeader('X_FILENAME',encodeURIComponent(file.name));
+			xhr.send(file);
+			
+		};
+		f();
+	}
+};
+
+</script>
