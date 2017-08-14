@@ -1,4 +1,4 @@
-/* 🐕GC<www.goxvo@qq.com> 2017-8-13 */
+/* 🐕GC<www.goxvo.ga> 2017-8-15 */
 var 
 UP=function(o,success,error,upload,x,file,A){
 	if(typeof success=='function')
@@ -16,9 +16,6 @@ UP=function(o,success,error,upload,x,file,A){
 		if(A=o.error)
 			error=A
 	}
-
-	x=new XMLHttpRequest()
-	x.open('POST','http://x.mouto.org/wb/x.php?up&_r='+Math.random(),1)
 
 	if(upload)
 		x.upload.onprogress=function(e){
