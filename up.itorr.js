@@ -1,4 +1,4 @@
-/* 🐕itorr<itorrrrrr@me.com> 2015-8-25 */
+/* 🐕GC<www.goxvo@qq.com> 2018-8-15 */
 var 
 UP=function(o,success,error,upload,x,file,A){
 	if(typeof success=='function')
