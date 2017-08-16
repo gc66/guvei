@@ -1,0 +1,21 @@
+<script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script>
+$(function(){
+  var head = "<!-- markdown -->\n";
+  var tail = "\n[img]https://api.isoyu.com/ip_images.php?signature=%E8%99%8E%E7%BB%BF%E6%9E%97-%E7%BC%96%E7%A8%8B%E5%AD%A6%E9%99%A2[/img]习惯性@穴儿，喵(^･ｪ･^)";
+  $('#reply_topic_button,#quick_chat_button,#post_topic_button').click(function(){
+    var content = $('#content').val();
+    if (head == content.substr(0, head.length)) head = '';
+    if (tail == content.substr(-tail.length)) tail = '';
+    $('#content').val(head + content + tail);
+  })
+});
+$(document).ready(function () {
+  $("#content").after('<p id="face"><img title="滑稽" src="/tpl/classic/img/face/e6bb91e7a8bd.gif" /></p>');
+  $('#face img').click(function () {
+    var title = "{" +  $(this).attr("title") + "}";
+    var oldvalue =  $("#content").val();
+    $("#content").val(oldvalue + title);
+  });
+});
+</script>
