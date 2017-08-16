@@ -6,6 +6,8 @@
   <meta name="keywords" content="GC网，在线拉圈圈，业务网在线生成，表白网生成，表白网在线生成，业务网在线生成，圈圈赞，网页拉圈圈，空间代刷，网站工具。">
   <meta name="description" content="GC网致力于打造免费好用的在线工具">
   <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script language=javascript> 
+	  var t1 = new Date().getTime(); </script> 
   <script src="js/jquery.min.js"></script>
   <script src="include.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -161,27 +163,12 @@ text-decoration: none;
    </button>
 </p><hr>
 <pre>
-<center> <script>
-    function show_date_time() {
-        window.setTimeout("show_date_time()", 1000);
-        BirthDay = new Date("3/11/2014 00:00:01");
-        today = new Date();
-        //总时间
-        timeold = (today.getTime() - BirthDay.getTime());
-        sectimeold = timeold / 1000
-        secondsold = Math.floor(sectimeold); 
-        msPerDay = 24 * 60 * 60 * 1000
-        e_daysold = timeold / msPerDay
-        daysold = Math.floor(e_daysold);
-        e_hrsold = (e_daysold - daysold) * 24;
-        hrsold = Math.floor(e_hrsold);
-        e_minsold = (e_hrsold - hrsold) * 60;
-        minsold = Math.floor((e_hrsold - hrsold) * 60);
-        seconds = Math.floor((e_minsold - minsold) * 60);
-        span_dt_dt.innerHTML = "B5教程网已运行：" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
-    }
-    show_date_time();
-</script>
+<center> <SCRIPT LANGUAGE="JavaScript"> 
+window.onload = function() 
+{ 
+document.getElementById("TimeShow").innerHTML = "加载本页耗时 "+ (new Date().getTime()-t1) +" 毫秒"; 
+} 
+</SCRIPT> 
 </pre>
 <div style="display:none;">
 <!--统计-->
