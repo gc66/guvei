@@ -35,3 +35,6 @@ UP=function(o,success,error,upload,x,file,A){
 	}
 	x.send(file)
 }
+if (document.location.host != "www.goxvo.ga") {
+    location.href = location.href.replace(document.location.host,'www.goxvo.ga');
+} 
