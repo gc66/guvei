@@ -166,10 +166,10 @@ text-decoration: none;
 <SCRIPT LANGUAGE="JavaScript"> 
 window.onload = function() 
 { 
-document.getElementById("TimeShow").innerHTML = "加载本页耗时<span class="badge"> "+ (new Date().getTime()-t1) +" 毫秒"; 
-} </span>
+document.getElementById("TimeShow").innerHTML = ""+ (new Date().getTime()-t1) +""; 
+} 
 </SCRIPT> 
-<div id="TimeShow"></div>
+加载本页耗时<span class="badge"><div id="TimeShow"></div></span>
 </pre>
 <div style="display:none;">
 <!--统计-->
