@@ -1,0 +1,132 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+    <title>Cloudimg - 欧尼酱图床,国内CDN图床,免费图床,图片外链,欧尼酱图社</title>
+    <meta name="description" content="一个免费图床和图片上传网站">
+    <meta name="keywords" content="免费CDN图床,免费图床,图片外链,欧尼酱图床,欧尼酱图社">
+	<link href="https://cdn.nos.onji.cn/web/favicon/pic.png" rel="shortcut icon">
+	<link rel="stylesheet" href="https://cdn.nos.onji.cn/web/pic/css/style.css" type="text/css" media="screen" />
+	<link type="text/css" rel="stylesheet" href="https://cdn.up.onji.cn/web/css/ggds/myRewards.css">
+	<script src="https://cdn.up.onji.cn/web/js/ggds/tctip.min.js"></script>
+	<script type="text/javascript" src="https://cdn.nos.onji.cn/web/pic/js/jquery.min.js"></script>
+	<script src = "https://cdn.nos.onji.cn/web/pic/js/jquery.form.js"></script>
+	<script src="https://cdn.nos.onji.cn/web/pic/js/clipBoard.min.js"></script>
+	<script src = "https://cdn.nos.onji.cn/web/pic/js/layer.js"></script>
+	<script src = "./js/embed.js"></script>
+	<script>
+    window.tctipConfig = {
+        list:{
+                notice: {icon: "https://cdn.up.onji.cn/web/image/ggds/tip.png", name:"公告栏", className:"myR-on", text: '1.请遵循<a href="https://tieba.baidu.com/tb/eula.html" target="_blank"><b style="color:red;">贴吧协议</b></a>合理上传图片。<br>2.严禁上传擦边图片内容,否则将链接到该图片的域名防盗链。<br>3.如果遇到图片上传失败的情况，可以试试<a href="http://pic.onji.cn/xl.html" target="_blank"><b style="color:red;">简洁版(新浪)</b></a>进行上传。'},
+                alipay: {icon: "https://cdn.up.onji.cn/web/image/ggds/alipay.png", name:"支付宝", desc: "给站长“欧尼酱”\n用支付宝投食", qrimg: "https://cdn.onji.cn/img/tbimg/?i=7c1ed21b0ef41bd5cc58b7df5bda81cb39db3d95.jpg"},
+                weixin: {icon: "https://cdn.up.onji.cn/web/image/ggds/weixin.png", name:"微信", desc: "给站长“欧尼酱”\n用微信投食", qrimg: "https://cdn.onji.cn/img/tbimg/?i=b3119313b07eca80960e66cc9b2397dda1448396.jpg"}	
+        }
+    };
+    </script>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?1d42bffaa591d00431d2880bf129d885";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+$(document).ready(function(){
+  document.getElementById("url").style.display="none";
+  document.getElementById("file").style.display="inline";
+});
+$(function(){
+  $(":radio").click(function(){ 
+   if($(this).val()=="remote") {
+     document.getElementById("url").style.display="inline";
+     document.getElementById("file").style.display="none";
+	 document.getElementById("url").value = "";
+   }
+   else {
+     document.getElementById("url").style.display="none";
+     document.getElementById("file").style.display="inline";
+	 document.getElementById("file").value = "";
+   }
+  });
+ });
+</script>
+</head>
+<body>
+	    <div id = "msg">
+		<div id = "loading_up">
+		<center><img src = "https://cdn.nos.onji.cn/web/pic/img/loading.gif" /></center>
+		<center>正在上传，请稍后...</center>
+		</div>
+		<div id = "success_up"><center>上传成功！</center></div>
+	    </div>
+		<div id = "up">
+		<center>
+		重要：<a href = "http://blog.onji.cn/2017/85.html" rel = "nofollow" target = "_blank" >关于域名关闭公共外链！</a>
+		<form enctype="multipart/form-data" method="post" action="https://open.onji.cn/api/upload_baidu.php" id = "upform">
+		<div id = "interface">
+		上传方式：
+	    <input name="uptype" type="radio" value="localhost" checked = "checked" id = "localhost" /> 本地
+        <input name="uptype" type="radio" value="remote" id = "remote" /> URL上传
+		</div>
+		<input type="file" name="up" id = "file" class = "up-file" accept="image/*"/>
+		<input type="text" name="url" id="url" class = "url" placeholder="输入图片地址" />
+		<input type="submit" id = 'btn' value = "开始上传" class = "btn" />
+		</form>
+		</center>
+	</div>
+    <div id = "img-box"><center><a href = "" id = "img-url" target = "_blank" title = "点此查看原图" rel = "nofollow"><img src = "" id = "show_img" width="330" height="120" /></a></center></div>
+	<div id = "show">
+		<center>
+		<form>
+			<table width = "780">
+				<tr>
+					<td width = "40%" align="right" style = "padding-right:20px;">Link：</td>
+					<td>
+					    <input type = "text" name = "linkurl" id = "linkurl" value = "">
+						<a href = "javascript:;" class = "copy" id = "copylink">复 制</a>
+					</td>
+				</tr>
+				<tr>
+					<td width = "40%" align="right" style = "padding-right:20px;">Html：</td>
+					<td>
+						<input type = "text" name = "htmlurl" id = "htmlurl" value = "">
+						<a href = "javascript:;" class = "copy" id = "copyhtml">复 制</a>
+					</td>
+				</tr>
+				<tr>
+					<td width = "40%" align="right" style = "padding-right:20px;">BBCode：</td>
+					<td>
+						<input type = "text" name = "ubburl" id = "ubburl" value = "">
+						<a href = "javascript:;" class = "copy" id = "copyubb">复 制</a>
+					</td>
+				</tr>	
+				<tr>
+					<td width = "40%" align="right" style = "padding-right:20px;">Markdown：</td>
+					<td>
+						<input type = "text" name = "mdurl" id = "mdurl" value = "">
+						<a href = "javascript:;" class = "copy" id = "copymd">复 制</a>
+					</td>
+				</tr>	
+			</table>
+		</form>
+		</center>
+	</div>
+	<!--底部版权-->
+	<div id = "footer">Copyright © 2015 - 2017 Cloudimg.All rights reserved.<br><a href = "http://photo.onji.cn/" rel = "nofollow" target = "_blank">图库.| <a href = "./xl.html" rel = "nofollow" target = "_blank">weiboⅠ | <a href = "./weibo.html" rel = "nofollow" target = "_blank">weiboⅡ| <a href = "https://imgapi.onji.cn/" rel = "nofollow" target = "_blank">IMGAPI.| <a href = "https://jq.qq.com/?_wv=1027&k=4CRwULt" rel = "nofollow" target = "_blank">QQ群.| <a href = "javascript:;" onclick = "use();">使用说明.</a></div>
+		<div id = "instructions">
+			<div id = "use-title">使用说明（必看）：<div id = "close"><a href = "javascript:;">关闭</a></div></div>
+			<ul>
+			    <li>URL上传待添加。。。</li>
+				<li>支持HTTPS，CDN加速，上传限制为2M</li>
+				<li>推荐使用Chrome、Firefox浏览器</li>
+				<li>在法律允许范围内，请随意使用本图床。</li>
+				<li>请勿上传违反中国大陆的图片，违者后果自负。</li>
+				<li>严禁上传色情、暴力、反动等图片，否则将链接到该图片的域名防盗链。</li>
+				<li>本图床由xz-pic二次开发。新浪图床感谢卜卜口提供的接口。</li>
+				<li>希望使用图床的小伙伴们能为加个链接，谢谢。</li>
+				<li>客服：<a href = "http://wpa.qq.com/msgrd?v=3&uin=1733281994&site=qq&menu=yes" rel = "nofollow" target = "_blank" title = "联系站长">1733281994</a> QQ群：<a href = "https://jq.qq.com/?_wv=1027&k=4CRwULt" rel = "nofollow" target = "_blank" title = "点此加群">236566068</a></li>
+			</ul>
+		</div>
+</body>
+</html>
