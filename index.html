@@ -4,18 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<script language=javascript> 
 	  var t1 = new Date().getTime(); </script>
-	<script language="javascript">
-function clear(){
-    Source=document.body.firstChild.data;
-    document.open();
-    document.close();
-    document.title="看不到源代码";
-    document.body.innerHTML=Source;
-}
-</script>
-</head>
-<body onload=clear()>
-<!--
   <title>GC社区 - 新起点,聚集网络各种热门工具,空间业务,网络工具,娱乐工具,专业工具</title>
   <meta name="keywords" content="GC网，在线图床，在线杀毒，福利站，接码，定位，社工，加密，抠图，网站工具。">
   <meta name="description" content="GC网致力于打造免费好用的在线工具">
@@ -46,8 +34,18 @@ text-decoration: none;
 	<head>
 
 <base target="_blank">
-
+<script language="javascript">
+function clear(){
+    Source=document.body.firstChild.data;
+    document.open();
+    document.close();
+    document.title="看不到源代码";
+    document.body.innerHTML=Source;
+}
+</script>
 </head>
+<body onload=clear()>
+<!--
 <style type="text/css"></style><style type="text/css"></style><link id="i2s_style_common" rel="stylesheet" type="text/css" href="chrome-extension://khpldpckelpmfkmfkgpgohehmplehonc/css/common/common.css"></head>
 <body oncontextmenu="return false" onselectstart="return false"><nav class="navbar navbar-fixed-top navbar-default">
     <div class="container">
