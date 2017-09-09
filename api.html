@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+ 2 
+ 3 <html lang="en">
+ 4 <head>
+ 5     <meta charset="UTF-8">
+ 6     <title>Title</title>
+ 7 </head>
+ 8 <style>
+ 9 
+10 </style>
+11 <body>
+12     <button onclick = request()>tijiao</button>
+13 </body>
+14 </html>
+15 <script>
+16     function request() {
+17         var xhr =  new XMLHttpRequest;
+18         xhr.onreadystatechange = function () {
+19             if (this.readyState == 0) {
+20                 console.log("UNSENT open 尚未调用");
+21             } else if (this.readyState == 1) {
+22                 console.log("OPEND open 已调用");
+23             } else if (this.readyState == 2) {
+24                 console.log("接收头消息");
+25             } else if (this.readyState == 3) {
+26                 console.log("接收响应主体");
+27             } else {
+28                 console.log(JSON.parse(this.responseText));
+29             }
+30         };
+31         xhr.open('GET', "http://route.showapi.com/90-87?showapi_appid=45300&showapi_sign=c28de9d6f79e44369a9abcd40fa3e277");
+32         xhr.send();
+33     }
+34 </script>
